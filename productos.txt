@@ -1,0 +1,8 @@
+[
+  {
+    "title": "Persona 5 Royal",
+    "price": 29.99,
+    "thumbnail": "https://www.portalgames.com.ar/wp-content/uploads/2020/04/persona-5-royal.jpg",
+    "id": 1
+  }
+]
