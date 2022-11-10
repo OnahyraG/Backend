@@ -8,7 +8,7 @@ class Contenedor {
     }
 
     async save(product){
-        
+
         try{
             const products = await this.getAll();
             if(products.length>0){
@@ -21,7 +21,7 @@ class Contenedor {
                 product.id =  1;
                 await fs.promises.writeFile(this.filename, JSON.stringify([product], null, 2));
             }
-            
+
 
         } catch(err){
             console.log(err);
@@ -38,7 +38,7 @@ class Contenedor {
         } catch (err){
             console.log(err);
         }
-        
+
     }
 
     async getAll(){
@@ -51,7 +51,7 @@ class Contenedor {
             }else{
                 return [];
             }
-            
+
         }
         catch(err){
             return "Cannot read file";
@@ -63,10 +63,10 @@ class Contenedor {
     async deleteById(id){
         try{
             const products = await this.getAll();
-    
+
             const newProducts = products.filter(product => product.id !== id);
             console.log('Deleted product successfully');
-    
+
             await fs.promises.writeFile(this.filename, JSON.stringify(newProducts, null, 2));
             } catch (err){
                 return console.log(err);
@@ -87,7 +87,12 @@ class Contenedor {
             console.log("Error", err);
         }
     }
-    
+
+    async getRandom(){
+        const products = await this.getAll();
+        let item = products[Math.floor(Math.random()*products.length)];
+        return item;
+    }
 }
 
 module.exports = Contenedor;
